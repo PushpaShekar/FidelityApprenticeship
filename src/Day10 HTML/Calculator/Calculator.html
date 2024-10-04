@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator</title>
+    </head>
+    <body>
+
+        <h1>Calculator</h1>
+
+        <img src="./images/calcii.avif" alt="Calculator Header" name="headerimg" height="300" width="400">
+        <form id="calcForm" onSubmit="returnCalculate()">
+
+            <label for="input1">Input1: </label>
+            <input type="number" id="input1" name="input1" required><br>
+
+            <label for="input2">Input2: </label>
+            <input type="number" id="input2" name="input2" required><br>
+
+            <label for="opertaion">Select Operation:</label>
+            <select id="operation" name="operation" required>
+                <option value="">Select..</option>
+                <option value="ADD">ADD</option>
+                <option value="SUBTRACT">SUBTRACT</option>
+                <option value="MULTIPLY">MULTIPLY</option>
+                <option value="DIVIDE">DIVIDE</option>
+            </select><br>
+
+            <input type="image" src="./images/anime.jpg" alt="Submit" name="submit" height="95" width="95">
+
+            <input type="image" src="./images/images.jpg" alt="reset" height="95" width="95" onclick="document.getElementById('calcForm').reset(); return false;">
+        </form>
+        <p id="result"></p>
+
+        <script>
+            function calculate() {
+
+                const input1 = parseFloat(document.getElementById('input1').value);
+                const input2 = parseFloat(document.getElementById('input2').value);
+                const operation = document.getElementById('operation').value;
+                let result;
+
+                if(operation === "ADD") {
+                    result = input1 + input2;
+                } else if(operation === "SUBTRACT") {
+                    result = input1-input2;
+                } else if(operation === "MULTIPLY") {
+                    result = input1 * input2;
+                } else if(operation === "DIVIDE") {
+                    if(input2 === 0) {
+                        alert("Cannot divide by zero");
+                        return false;
+                    }
+                    result = input1 / input2;
+                } else {
+                    alert("Please select an operation");
+                    return false;
+                }
+
+                document.getElementById('result').innerText = `Result: ${result}`;
+                return false;
+            }
+        </script>
+    </body>
+</html>
